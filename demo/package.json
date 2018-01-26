@@ -44,6 +44,7 @@
   },
   "scripts": {
     "build.plugin": "cd ../src && npm run build",
-    "ci.tslint": "npm i && tslint --project tsconfig.json --config '../src/tslint.json'"
+    "tslint": "tslint --project tsconfig.json --config '../src/tslint.json'",
+    "ci.tslint": "npm i && npm run tslint"
   }
 }
