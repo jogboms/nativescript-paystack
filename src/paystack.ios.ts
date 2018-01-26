@@ -1,5 +1,4 @@
-import { Common } from './paystack.common';
-import { Page } from 'tns-core-modules/ui/page/page';
+import { Common } from "./paystack.common";
 
 export class NSPaystack extends Common {
     initialize(publicKey: string) {

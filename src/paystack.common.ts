@@ -1,4 +1,4 @@
-import { Page } from 'tns-core-modules/ui/page/page';
+import { Page } from "tns-core-modules/ui/page/page";
 
 export abstract class Common {
   constructor(public page: Page) { }

@@ -1,11 +1,10 @@
-import { Common } from './paystack.common';
-import { Page } from 'tns-core-modules/ui/page/page';
+import { Common } from "./paystack.common";
 
-const Paystack = co.paystack.android.Paystack;
+// const Paystack = co.paystack.android.Paystack;
 const PaystackSdk = co.paystack.android.PaystackSdk;
-const Card = co.paystack.android.model.Card;
-const Charge = co.paystack.android.model.Charge;
-type Transaction = co.paystack.android.Transaction;
+// const Card = co.paystack.android.model.Card;
+// const Charge = co.paystack.android.model.Charge;
+// type Transaction = co.paystack.android.Transaction;
 
 export class NSPaystack extends Common {
 
