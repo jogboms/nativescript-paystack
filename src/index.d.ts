@@ -1,6 +1,17 @@
 import { Common } from './paystack.common';
-export declare class Paystack extends Common {
-  // define your typings manually
-  // or..
-  // take the ios or android .d.ts files and copy/paste them here
+export declare class NSPaystack extends Common {
+  getPublicKey(): string;
+  initialize(publicKey: string): void;
+  setPublicKey(publicKey: string): void;
+  payment(params: {
+    amount: number;
+    email: string;
+    number: string;
+    cvc: string;
+    year: number;
+    month: number;
+  }): Promise<string | {
+    code;
+    message;
+  }>;
 }
