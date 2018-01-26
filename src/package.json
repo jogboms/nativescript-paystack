@@ -1,7 +1,7 @@
 {
     "name": "nativescript-paystack",
-    "version": "0.0.1-beta.0",
-    "description": "Your awesome NativeScript plugin.",
+    "version": "0.0.1",
+    "description": "Nativescript integration for Paystack payment platform.",
     "main": "paystack",
     "typings": "index.d.ts",
     "nativescript": {
@@ -25,18 +25,28 @@
         "demo.reset": "cd ../demo && rimraf platforms",
         "plugin.prepare": "npm run tsc && cd ../demo && tns plugin remove nativescript-paystack && tns plugin add ../src",
         "clean": "cd ../demo && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules && npm run plugin.link",
-        "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'"
+        "ci.tslint": "npm i && tslint '**/*.ts' --config './tslint.json' --exclude '**/node_modules/**'"
     },
     "keywords": [
         "NativeScript",
+        "Paystack",
+        "Payments",
+        "Nigeria",
+        "merchants",
+        "ecommerce",
         "JavaScript",
         "Android",
         "iOS"
     ],
     "author": {
-        "name": "Your Name",
-        "email": "youremail@yourdomain.com"
+        "name": "Jeremiah Ogbomo",
+        "email": "jeremiahogbomo@gmail.com"
     },
+    "contributors": [{
+        "name": "Afees Lawal",
+        "email": "moderateepheezy@gmail.com",
+        "url": "https://github.com/moderateepheezy"
+    }],
     "bugs": {
         "url": "https://github.com/jogboms/nativescript-paystack/issues"
     },
