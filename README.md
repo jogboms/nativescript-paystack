@@ -7,7 +7,7 @@
 ## Installation
 
 ```javascript
-tns plugin add <your-plugin-name>
+tns plugin add nativescript-paystack
 ```
 
 ## Usage 
