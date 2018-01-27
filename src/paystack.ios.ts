@@ -1,4 +1,4 @@
-import { Common } from "./paystack.common";
+import { Common, NSPaystackResponse } from "./paystack.common";
 
 export class NSPaystack extends Common {
     initialize(publicKey: string) {
@@ -13,8 +13,8 @@ export class NSPaystack extends Common {
         Paystack.setDefaultPublicKey(publicKey);
     }
 
-    payment(params: { amount: number, email: string, number: string, cvc: string, year: number, month: number }): Promise<string | { code, message }> {
-        return new Promise((resolve, reject) => {
+    payment(params: { amount: number, email: string, number: string, cvc: string, year: number, month: number }): Promise<NSPaystackResponse> {
+        return new Promise<NSPaystackResponse>((resolve, reject) => {
             const cardParams = PSTCKCardParams.new();
             cardParams.number = "" + params.number;
             cardParams.cvc = "" + params.cvc;
@@ -30,12 +30,15 @@ export class NSPaystack extends Common {
                 cardParams,
                 transactionParams,
                 this.page.ios,
-                (error: NSError) => reject({
+                (error: NSError, reference: string) => reject({
                     code: error.code,
                     message: error.localizedFailureReason,
+                    reference
                 }),
                 () => 0,
-                (reference) => resolve(reference)
+                (reference) => resolve({
+                    reference
+                })
             );
         });
     }
