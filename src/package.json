@@ -42,11 +42,13 @@
         "name": "Jeremiah Ogbomo",
         "email": "jeremiahogbomo@gmail.com"
     },
-    "contributors": [{
-        "name": "Afees Lawal",
-        "email": "moderateepheezy@gmail.com",
-        "url": "https://github.com/moderateepheezy"
-    }],
+    "contributors": [
+        {
+            "name": "Afees Lawal",
+            "email": "moderateepheezy@gmail.com",
+            "url": "https://github.com/moderateepheezy"
+        }
+    ],
     "bugs": {
         "url": "https://github.com/jogboms/nativescript-paystack/issues"
     },

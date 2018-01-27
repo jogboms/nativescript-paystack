@@ -1,5 +1,7 @@
-import { Common } from './paystack.common';
+import { Common, NSPaystackResponse } from "./paystack.common";
 export declare class NSPaystack extends Common {
+  private charge;
+  private transaction;
   getPublicKey(): string;
   initialize(publicKey: string): void;
   setPublicKey(publicKey: string): void;
@@ -10,8 +12,6 @@ export declare class NSPaystack extends Common {
     cvc: string;
     year: number;
     month: number;
-  }): Promise<string | {
-    code;
-    message;
-  }>;
+  }): Promise<NSPaystackResponse>;
+  private chargeCard();
 }
