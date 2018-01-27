@@ -71,7 +71,7 @@ export class HelloWorldModel extends Observable {
       cvc: "408",
       year: 2019,
       month: 3,
-    }).then((reference) => {
+    }).then(({ reference }) => {
       console.log(`Reference: ${reference}`);
       return request({
         url: `https://api.paystack.co/transaction/verify/${reference}`,
