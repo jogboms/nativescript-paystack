@@ -49,6 +49,9 @@ interface PaystackResponse {
   };
 }
 
+const publicKey = "";
+const secretKey = "";
+
 export class HelloWorldModel extends Observable {
   public message: string;
   private paystack: NSPaystack;
@@ -59,14 +62,14 @@ export class HelloWorldModel extends Observable {
     this.set("reference", "********");
     this.paystack = new NSPaystack(page);
 
-    this.paystack.initialize("pk_test_9ae25f62d526283e2c2b259cabc7effb076c150e");
+    this.paystack.initialize(publicKey);
   }
 
   makePayment() {
     this.set("isLoading", true);
     this.paystack.payment({
       amount: 500000,
-      email: "o.jeremiah@rom-flex.com",
+      email: "my.email@gmail.com",
       number: "4084084084084081",
       cvc: "408",
       year: 2019,
@@ -76,7 +79,7 @@ export class HelloWorldModel extends Observable {
       return request({
         url: `https://api.paystack.co/transaction/verify/${reference}`,
         method: "GET",
-        headers: { "Authorization": "Bearer sk_test_d507b43657b6bbfd22233ee43389233a83980a9d" }
+        headers: { "Authorization": `Bearer ${secretKey}` }
       });
     })
       .then((res: HttpResponse) => {

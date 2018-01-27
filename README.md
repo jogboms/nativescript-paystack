@@ -33,7 +33,7 @@ To charge a card, it is expected that the Form/UI responsible for handling the d
 ```ts
 this.paystack.payment({
     amount: 500000,
-    email: "o.jeremiah@rom-flex.com",
+    email: "my.email@gmail.com",
     number: "4084084084084081",
     cvc: "408",
     year: 2019,
