@@ -53,6 +53,7 @@ this.paystack.payment({
 ## API
 ### Payload Signature
 The payload signature is also available via the definition files.
+
 | Argument        | Type           | Description  |
 | ------------- |:-------------| :-----|
 | number          | string | the card number without any space seperator |
