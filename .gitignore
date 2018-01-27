@@ -5,6 +5,7 @@
 *.js.map
 *.log
 src/*.d.ts
+!src/objc!Paystack.d.ts
 !src/index.d.ts
 !src/references.d.ts
 !src/scripts/*.js
