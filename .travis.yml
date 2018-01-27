@@ -1,6 +1,8 @@
 branches:
   only: 
     - master
+    - develop
+
 matrix:
   include:
     - stage: "Lint"
