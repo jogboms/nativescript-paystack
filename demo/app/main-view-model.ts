@@ -1,7 +1,7 @@
-import { Observable } from 'tns-core-modules/data/observable';
-import { NSPaystack } from 'nativescript-paystack';
-import { Page } from 'tns-core-modules/ui/page/page';
-import { getJSON, request, HttpResponse, HttpContent } from "tns-core-modules/http/http";
+import { Observable } from "tns-core-modules/data/observable";
+import { NSPaystack } from "nativescript-paystack";
+import { Page } from "tns-core-modules/ui/page/page";
+import { request, HttpResponse } from "tns-core-modules/http/http";
 
 interface PaystackResponse {
   status: boolean;
@@ -49,12 +49,11 @@ interface PaystackResponse {
   };
 }
 
-declare const PSTCKCardParams, PSTCKTransactionParams, PSTCKAPIClient;
 export class HelloWorldModel extends Observable {
   public message: string;
   private paystack: NSPaystack;
 
-  constructor(private page: Page) {
+  constructor(page: Page) {
     super();
     this.set("isLoading", false);
     this.set("reference", "********");
