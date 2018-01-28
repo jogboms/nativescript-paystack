@@ -56,6 +56,8 @@ export class NSPaystack extends Common {
                         });
                     },
 
+                    beforeValidate: (transaction: Transaction) => { },
+
                     onError: (error, transaction: Transaction) => {
                         reject({
                             code: 0,
