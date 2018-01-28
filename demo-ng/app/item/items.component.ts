@@ -101,21 +101,23 @@ export class ItemsComponent implements OnInit {
 
   makePayment() {
     this.isLoading = true;
-    this.paystack.payment({
+    const params = {
       amount: 500000,
       email: "my.email@gmail.com",
       number: "4084084084084081",
       cvc: "408",
       year: 2019,
       month: 3,
-    }).then(({ reference }) => {
-      console.log(`Reference: ${reference}`);
-      return request({
-        url: `https://api.paystack.co/transaction/verify/${reference}`,
-        method: "GET",
-        headers: { "Authorization": `Bearer ${secretKey}` }
-      });
-    })
+    };
+    this.paystack.payment(params)
+      .then(({ reference }) => {
+        console.log(`Reference: ${reference}`);
+        return request({
+          url: `https://api.paystack.co/transaction/verify/${reference}`,
+          method: "GET",
+          headers: { "Authorization": `Bearer ${secretKey}` }
+        });
+      })
       .then((res: HttpResponse) => {
         const paystack: PaystackResponse = res.content.toJSON();
 
@@ -126,11 +128,7 @@ export class ItemsComponent implements OnInit {
           this.reference = paystack.data.reference;
         }
         this.isLoading = false;
-      }, (e) => {
-        //// Argument (e) is Error!
-        console.log(e);
-      }
-      )
+      })
       .catch(err => {
         console.dir(err);
         this.reference = "********";
