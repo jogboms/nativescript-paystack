@@ -19,8 +19,11 @@ demo/*.d.ts
 !demo/references.d.ts
 demo/lib
 demo/platforms
+demo-ng/platforms
 node_modules
 publish/src
 publish/package
 demo/report/report.html
 demo/report/stats.json
+demo-ng/report/report.html
+demo-ng/report/stats.json

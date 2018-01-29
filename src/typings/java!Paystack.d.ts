@@ -14,7 +14,7 @@ declare module co {
                 export class TransactionCallback {
                     public constructor(implementation: {
                         onSuccess: (transaction: Transaction) => void;
-                        beforeValidate?: (transaction: Transaction) => void;
+                        beforeValidate: (transaction: Transaction) => void;
                         onError: (error: any, transaction: Transaction) => void;
                     })
                     public onSuccess(transaction: Transaction): void;

@@ -15,3 +15,5 @@ export declare class NSPaystack extends Common {
   }): Promise<NSPaystackResponse>;
   private chargeCard();
 }
+
+export * from "./paystack.common";

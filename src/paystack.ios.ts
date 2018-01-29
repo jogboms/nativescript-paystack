@@ -32,7 +32,7 @@ export class NSPaystack extends Common {
                 this.page.ios,
                 (error: NSError, reference: string) => reject({
                     code: error.code,
-                    message: error.localizedFailureReason,
+                    message: error.localizedDescription,
                     reference
                 }),
                 () => 0,
