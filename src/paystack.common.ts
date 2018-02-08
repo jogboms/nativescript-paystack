@@ -9,12 +9,21 @@ export interface NSPaystackErrorResponse {
   reference?: string;
 }
 
-export type NSPaystackResponse = NSPaystackSuccessResponse | NSPaystackErrorResponse;
+export type NSPaystackResponse =
+  | NSPaystackSuccessResponse
+  | NSPaystackErrorResponse;
 
 export abstract class Common {
-  constructor(public page: Page) { }
+  constructor(public page: Page) {}
   public abstract getPublicKey(): string;
   public abstract initialize(publicKey: string);
   public abstract setPublicKey(key: string);
-  public abstract payment(params: { amount: number, email: string, number: string, cvc: string, year: number, month: number }): Promise<NSPaystackResponse>;
+  public abstract payment(params: {
+    amount: number;
+    email: string;
+    number: string;
+    cvc: string;
+    year: number;
+    month: number;
+  }): Promise<NSPaystackResponse>;
 }
