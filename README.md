@@ -42,7 +42,7 @@ To charge a card, it is expected that the Form/UI responsible for handling the d
 
 ```ts
 const payment = this.paystack.payment(<NSPaymentParams>{
-    amount: 500000,
+    amount: 500000, // In Kobo
     email: "my.email@gmail.com",
     number: "4084084084084081",
     cvc: "408",
