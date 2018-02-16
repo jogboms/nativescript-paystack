@@ -1,6 +1,6 @@
 {
     "name": "nativescript-paystack",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "description": "Nativescript integration for Paystack payment platform.",
     "main": "paystack",
     "typings": "index.d.ts",
