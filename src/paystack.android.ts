@@ -6,12 +6,13 @@ import {
 } from "./paystack.common";
 import { android } from "tns-core-modules/application/application";
 import { ad } from "tns-core-modules/utils/utils";
+import { EventData } from "tns-core-modules/data/observable/observable";
 
-export class NSPayment implements Payment {
+export class NSPayment extends Payment {
     private _charge: co.paystack.android.model.Charge;
     private _transaction: co.paystack.android.Transaction;
 
-    constructor(params: NSPaymentParams) {
+    protected initialize(params: NSPaymentParams) {
         const cardNumber = new java.lang.String(params.number);
         const expiryMonth = new java.lang.Integer(params.month);
         const expiryYear = new java.lang.Integer(params.year);
@@ -49,7 +50,6 @@ export class NSPayment implements Payment {
     }
 
     charge(): Promise<NSPaystackResponse> {
-        this.addCustomField("Charged From", "Android SDK");
         this._transaction = null;
         return new Promise<NSPaystackResponse>((resolve, reject) => {
             co.paystack.android.PaystackSdk.chargeCard(
@@ -60,6 +60,10 @@ export class NSPayment implements Payment {
                     onSuccess: (
                         transaction: co.paystack.android.Transaction
                     ) => {
+                        this.notify(<EventData>{
+                            eventName: Payment.closeDialogEvent,
+                            object: this
+                        });
                         resolve({
                             reference: transaction.getReference()
                         });
@@ -67,12 +71,21 @@ export class NSPayment implements Payment {
 
                     beforeValidate: (
                         transaction: co.paystack.android.Transaction
-                    ) => {},
+                    ) => {
+                        this.notify(<EventData>{
+                            eventName: Payment.openDialogEvent,
+                            object: this
+                        });
+                    },
 
                     onError: (
                         error,
                         transaction: co.paystack.android.Transaction
                     ) => {
+                        this.notify(<EventData>{
+                            eventName: Payment.closeDialogEvent,
+                            object: this
+                        });
                         reject({
                             code: 0,
                             message: error.getMessage(),
@@ -90,16 +103,18 @@ export class NSPaystack extends Common {
         return co.paystack.android.PaystackSdk.getPublicKey();
     }
 
-    initialize(publicKey: string) {
+    initialize(publicKey: string): this {
         this.setPublicKey(publicKey);
         co.paystack.android.PaystackSdk.initialize(ad.getApplicationContext());
+        return this;
     }
 
-    setPublicKey(publicKey: string) {
+    setPublicKey(publicKey: string): this {
         co.paystack.android.PaystackSdk.setPublicKey(publicKey);
+        return this;
     }
 
-    payment(params: NSPaymentParams): Payment {
+    payment(params: NSPaymentParams): NSPayment {
         return new NSPayment(params);
     }
 }

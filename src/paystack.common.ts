@@ -1,12 +1,14 @@
 import { Page } from "tns-core-modules/ui/page/page";
+import { Observable } from "tns-core-modules/data/observable/observable";
 
 export interface NSPaystackSuccessResponse {
     reference: string;
 }
-export interface NSPaystackErrorResponse {
+
+export interface NSPaystackErrorResponse
+    extends Partial<NSPaystackSuccessResponse> {
     code: number | string;
     message: string;
-    reference?: string;
 }
 
 export type NSPaystackResponse =
@@ -22,16 +24,24 @@ export interface NSPaymentParams {
     month: number;
 }
 
-export interface Payment {
-    charge(): Promise<NSPaystackResponse>;
-    addCustomField(name: string, value: string): this;
-    addMetadata(name: string, value: string): this;
+export abstract class Payment extends Observable {
+    public static openDialogEvent = "openDialogEvent";
+    public static closeDialogEvent = "closeDialogEvent";
+    protected abstract initialize(params: NSPaymentParams);
+    public abstract addCustomField(name: string, value: string): this;
+    public abstract addMetadata(name: string, value: string): this;
+    public abstract charge(): Promise<NSPaystackResponse>;
+
+    constructor(params: NSPaymentParams) {
+        super();
+        this.initialize(params);
+    }
 }
 
 export abstract class Common {
     constructor(public page: Page) {}
     public abstract getPublicKey(): string;
-    public abstract initialize(publicKey: string);
-    public abstract setPublicKey(key: string);
+    public abstract initialize(publicKey: string): this;
+    public abstract setPublicKey(key: string): this;
     public abstract payment(params: NSPaymentParams): Payment;
 }

@@ -5,12 +5,13 @@ import {
     NSPaymentParams
 } from "./paystack.common";
 import { ios } from "tns-core-modules/utils/utils";
+import { EventData } from "tns-core-modules/data/observable/observable";
 
-export class NSPayment implements Payment {
+export class NSPayment extends Payment {
     private _card: PSTCKCardParams;
     private _transaction: PSTCKTransactionParams;
 
-    constructor(params: NSPaymentParams) {
+    protected initialize(params: NSPaymentParams) {
         this._card = PSTCKCardParams.new();
         this._card.number = "" + params.number;
         this._card.cvc = "" + params.cvc;
@@ -63,28 +64,43 @@ export class NSPayment implements Payment {
                         message: error.localizedDescription,
                         reference
                     }),
-                () => console.log("Request Validation"),
-                () => console.log("Will Present Dialog"),
-                () => console.log("On Dismissed Dialog"),
+                () => {
+                    // console.log("Request Validation")
+                },
+                () => {
+                    this.notify(<EventData>{
+                        eventName: Payment.openDialogEvent,
+                        object: this
+                    });
+                },
+                () => {
+                    this.notify(<EventData>{
+                        eventName: Payment.closeDialogEvent,
+                        object: this
+                    });
+                },
                 reference => resolve({ reference })
             );
         });
     }
 }
-export class NSPaystack extends Common {
-    initialize(publicKey: string) {
-        this.setPublicKey(publicKey);
-    }
 
+export class NSPaystack extends Common {
     getPublicKey(): string {
         return Paystack.defaultPublicKey();
     }
 
-    setPublicKey(publicKey: string) {
-        Paystack.setDefaultPublicKey(publicKey);
+    initialize(publicKey: string): this {
+        this.setPublicKey(publicKey);
+        return this;
     }
 
-    payment(params: NSPaymentParams): Payment {
+    setPublicKey(publicKey: string): this {
+        Paystack.setDefaultPublicKey(publicKey);
+        return this;
+    }
+
+    payment(params: NSPaymentParams): NSPayment {
         return new NSPayment(params);
     }
 }
