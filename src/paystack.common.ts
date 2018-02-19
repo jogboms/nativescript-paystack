@@ -39,7 +39,7 @@ export abstract class Payment extends Observable {
 }
 
 export abstract class Common {
-    constructor(public page: Page) {}
+    constructor() {}
     public abstract getPublicKey(): string;
     public abstract initialize(publicKey: string): this;
     public abstract setPublicKey(key: string): this;
