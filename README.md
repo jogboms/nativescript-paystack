@@ -116,6 +116,9 @@ export interface NSPaystackErrorResponse {
 }
 ```
 
+### Note
+It is expected that all tests be carried out on an actual device.
+
 ## License
 
 Apache License Version 2.0, January 2004
