@@ -1,4 +1,3 @@
-import { Page } from "tns-core-modules/ui/page/page";
 import { Observable } from "tns-core-modules/data/observable/observable";
 
 export interface NSPaystackSuccessResponse {
