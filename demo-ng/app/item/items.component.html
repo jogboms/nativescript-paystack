@@ -24,26 +24,28 @@ core theme, such as p-20, btn, h2, and list-group. You can view a full list of t
 class names available for styling your app at https://docs.nativescript.org/ui/theme.
 -->
 <GridLayout class="page p-10">
-    <StackLayout class="m-t-15" [visibility]="isLoading ? 'collapsed' : 'visible'">
-        <Label text="REFERENCE CODE" class="t-15 m-b-5 text-center c-black" textWrap="true"></Label>
-        <Label [text]="reference" class="t-30 m-b-5 text-center c-black" textWrap="true"></Label>
-        <Label [text]="amount" class="t-20 m-b-15 text-center c-black" textWrap="true"></Label>
-        <StackLayout *ngIf="authorization" class="m-x-15 m-t-5 m-b-15">
-            <Label class="h2 c-black" text="Authorization"></Label>
-            <Label class="t-15" [text]="authorization.authorization_code"></Label>
-            <Label class="t-15" [text]="authorization.last4"></Label>
-            <Label class="t-15" [text]="authorization.exp_month"></Label>
-            <Label class="t-15" [text]="authorization.exp_year"></Label>
-            <Label class="t-15" [text]="authorization.card_type"></Label>
-            <Label class="t-15" [text]="authorization.bank"></Label>
-            <Label class="h2 c-black m-t-10" text="Customer"></Label>
-            <Label class="t-15" [text]="customer.id"></Label>
-            <Label class="t-15" [text]="customer.first_name"></Label>
-            <Label class="t-15" [text]="customer.last_name"></Label>
-            <Label class="t-15" [text]="customer.email"></Label>
-            <Label class="t-15" [text]="customer.phone"></Label>
+    <ScrollView>
+        <StackLayout class="m-t-15" [visibility]="isLoading ? 'collapsed' : 'visible'">
+            <Label text="REFERENCE CODE" class="t-15 m-b-5 text-center c-black" textWrap="true"></Label>
+            <Label [text]="reference" class="t-30 m-b-5 text-center c-black" textWrap="true"></Label>
+            <Label [text]="amount" class="t-20 m-b-15 text-center c-black" textWrap="true"></Label>
+            <StackLayout *ngIf="authorization" class="m-x-15 m-t-5 m-b-15">
+                <Label class="h2 c-black" text="Authorization"></Label>
+                <Label class="t-15" [text]="authorization.authorization_code"></Label>
+                <Label class="t-15" [text]="authorization.last4"></Label>
+                <Label class="t-15" [text]="authorization.exp_month"></Label>
+                <Label class="t-15" [text]="authorization.exp_year"></Label>
+                <Label class="t-15" [text]="authorization.card_type"></Label>
+                <Label class="t-15" [text]="authorization.bank"></Label>
+                <Label class="h2 c-black m-t-10" text="Customer"></Label>
+                <Label class="t-15" [text]="customer.id"></Label>
+                <Label class="t-15" [text]="customer.first_name"></Label>
+                <Label class="t-15" [text]="customer.last_name"></Label>
+                <Label class="t-15" [text]="customer.email"></Label>
+                <Label class="t-15" [text]="customer.phone"></Label>
+            </StackLayout>
+            <Button class="btn btn-primary" (tap)="makePayment()" text="Make Payment"></Button>
         </StackLayout>
-        <Button class="btn btn-primary" (tap)="makePayment()" text="Make Payment"></Button>
-    </StackLayout>
+    </ScrollView>
     <ActivityIndicator [visibility]="isLoading ? 'visible' : 'collapsed'" [busy]="isLoading" class="m-x-auto activity-indicator m-y-auto"></ActivityIndicator>
 </GridLayout>
