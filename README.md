@@ -24,10 +24,10 @@ First import package into the `main-page`'s model or `app.component` as the case
 import { NSPaystack } from "nativescript-paystack";
 ```
 
-Then create an instance of `NSPaystack` which requires a dependency of the `Page` object.
+Then create an instance of `NSPaystack`.
 
 ```ts
-this.paystack = new NSPaystack(<Page>page);
+this.paystack = new NSPaystack();
 ```
 
 Initialize the instance with the `publicKey` gotten from Paystack
