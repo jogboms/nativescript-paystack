@@ -56,11 +56,11 @@ export class HelloWorldModel extends Observable {
     public message: string;
     private paystack: NSPaystack;
 
-    constructor(page: Page) {
+    constructor() {
         super();
         this.set("isLoading", false);
         this.set("reference", "********");
-        this.paystack = new NSPaystack(page);
+        this.paystack = new NSPaystack();
 
         this.paystack.initialize(publicKey);
     }
