@@ -1,6 +1,5 @@
 import { Observable } from "tns-core-modules/data/observable";
 import { NSPaystack, NSPayment } from "nativescript-paystack";
-import { Page } from "tns-core-modules/ui/page/page";
 import { request, HttpResponse } from "tns-core-modules/http/http";
 
 interface PaystackResponse {
