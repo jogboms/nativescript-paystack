@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { NSPaystack, NSPayment } from "nativescript-paystack";
-import { Page } from "tns-core-modules/ui/page/page";
 import { request, HttpResponse } from "tns-core-modules/http/http";
 
 interface PaystackResponse {
@@ -87,10 +86,10 @@ export class ItemsComponent implements OnInit {
     reference: string;
     isLoading: boolean;
 
-    constructor(page: Page) {
+    constructor() {
         this.isLoading = false;
         this.reference = "********";
-        this.paystack = new NSPaystack(page);
+        this.paystack = new NSPaystack();
         this.paystack.initialize(publicKey);
     }
 

@@ -1,4 +1,3 @@
-import { Page } from "tns-core-modules/ui/page/page";
 import { Observable } from "tns-core-modules/data/observable/observable";
 
 export interface NSPaystackSuccessResponse {
@@ -39,7 +38,7 @@ export abstract class Payment extends Observable {
 }
 
 export abstract class Common {
-    constructor(public page: Page) {}
+    constructor() {}
     public abstract getPublicKey(): string;
     public abstract initialize(publicKey: string): this;
     public abstract setPublicKey(key: string): this;

@@ -18,7 +18,7 @@ matrix:
       language: node_js 
       node_js: "6"
       jdk: oraclejdk8
-      script: cd demo && npm run build.plugin && npm i && tns build ios --env.uglify && cd ../demo-ng && npm i && tns build ios --env.uglify --env.aot
+      script: cd demo && npm run build.plugin && npm i && tns build ios --env.uglify --env.snapshot && cd ../demo-ng && npm i && tns build ios --env.uglify --env.snapshot --env.aot
     - language: android
       os: linux
       env:

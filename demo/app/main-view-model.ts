@@ -1,6 +1,5 @@
 import { Observable } from "tns-core-modules/data/observable";
 import { NSPaystack, NSPayment } from "nativescript-paystack";
-import { Page } from "tns-core-modules/ui/page/page";
 import { request, HttpResponse } from "tns-core-modules/http/http";
 
 interface PaystackResponse {
@@ -56,11 +55,11 @@ export class HelloWorldModel extends Observable {
     public message: string;
     private paystack: NSPaystack;
 
-    constructor(page: Page) {
+    constructor() {
         super();
         this.set("isLoading", false);
         this.set("reference", "********");
-        this.paystack = new NSPaystack(page);
+        this.paystack = new NSPaystack();
 
         this.paystack.initialize(publicKey);
     }
