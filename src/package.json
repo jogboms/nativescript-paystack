@@ -1,6 +1,6 @@
 {
     "name": "nativescript-paystack",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "Nativescript integration for Paystack payment platform.",
     "main": "paystack",
     "typings": "index.d.ts",
@@ -14,38 +14,24 @@
         "tsc": "tsc -skipLibCheck",
         "build": "npm i && tsc",
         "next": "npm publish --tag next",
-        "postclone":
-            "npm i && node scripts/postclone.js && cd ../demo && npm i && cd ../src && npm run plugin.link",
-        "test.android":
-            "npm i && npm run tsc && npm run tslint && cd ../demo && tns build android && tns test android --justlaunch",
-        "test.ios":
-            "npm i && npm run tsc && npm run tslint && cd ../demo && tns build ios && tns test ios --justlaunch",
+        "postclone": "npm i && node scripts/postclone.js && cd ../demo && npm i && cd ../src && npm run plugin.link",
+        "test.android": "npm i && npm run tsc && npm run tslint && cd ../demo && tns build android && tns test android --justlaunch",
+        "test.ios": "npm i && npm run tsc && npm run tslint && cd ../demo && tns build ios && tns test ios --justlaunch",
         "tslint": "tslint --project tsconfig.json --config tslint.json",
-        "plugin.link":
-            "npm link && cd ../demo && npm link nativescript-paystack && cd ../src",
-        "plugin.link-ng":
-            "npm link && cd ../demo-ng && npm link nativescript-paystack && cd ../src",
+        "plugin.link": "npm link && cd ../demo && npm link nativescript-paystack && cd ../src",
+        "plugin.link-ng": "npm link && cd ../demo-ng && npm link nativescript-paystack && cd ../src",
         "plugin.tscwatch": "npm run tsc -- -w",
-        "demo.ios":
-            "npm i && npm run tsc && cd ../demo && tns run ios --syncAllFiles",
-        "demo.android":
-            "npm i && npm run tsc && cd ../demo && tns run android --syncAllFiles",
+        "demo.ios": "npm i && npm run tsc && cd ../demo && tns run ios --syncAllFiles",
+        "demo.android": "npm i && npm run tsc && cd ../demo && tns run android --syncAllFiles",
         "demo.reset": "cd ../demo && rimraf platforms",
-        "demo-ng.ios":
-            "npm i && npm run tsc && cd ../demo-ng && tns run ios --syncAllFiles",
-        "demo-ng.android":
-            "npm i && npm run tsc && cd ../demo-ng && tns run android --syncAllFiles",
+        "demo-ng.ios": "npm i && npm run tsc && cd ../demo-ng && tns run ios --syncAllFiles",
+        "demo-ng.android": "npm i && npm run tsc && cd ../demo-ng && tns run android --syncAllFiles",
         "demo-ng.reset": "cd ../demo-ng && rimraf platforms",
-        "plugin.prepare":
-            "npm run tsc && cd ../demo && tns plugin remove nativescript-paystack && tns plugin add ../src",
-        "clean":
-            "cd ../demo && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules && npm run plugin.link",
-        "plugin.prepare-ng":
-            "npm run tsc && cd ../demo-ng && tns plugin remove nativescript-paystack && tns plugin add ../src",
-        "clean-ng":
-            "cd ../demo-ng && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules && npm run plugin.link-ng",
-        "ci.tslint":
-            "npm i && tslint --project tsconfig.json --config tslint.json"
+        "plugin.prepare": "npm run tsc && cd ../demo && tns plugin remove nativescript-paystack && tns plugin add ../src",
+        "clean": "cd ../demo && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules && npm run plugin.link",
+        "plugin.prepare-ng": "npm run tsc && cd ../demo-ng && tns plugin remove nativescript-paystack && tns plugin add ../src",
+        "clean-ng": "cd ../demo-ng && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules && npm run plugin.link-ng",
+        "ci.tslint": "npm i && tslint --project tsconfig.json --config tslint.json"
     },
     "keywords": [
         "NativeScript",
@@ -62,13 +48,11 @@
         "name": "Jeremiah Ogbomo",
         "email": "jeremiahogbomo@gmail.com"
     },
-    "contributors": [
-        {
-            "name": "Afees Lawal",
-            "email": "moderateepheezy@gmail.com",
-            "url": "https://github.com/moderateepheezy"
-        }
-    ],
+    "contributors": [{
+        "name": "Afees Lawal",
+        "email": "moderateepheezy@gmail.com",
+        "url": "https://github.com/moderateepheezy"
+    }],
     "bugs": {
         "url": "https://github.com/jogboms/nativescript-paystack/issues"
     },
