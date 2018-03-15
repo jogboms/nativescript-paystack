@@ -1,3 +1,13 @@
+#### 0.2.2 (2018-03-15)
+
+##### New Features
+
+*  version bump to 0.2.2 (bb0455f7)
+
+##### Bug Fixes
+
+*  foregroundInsidePadding error on --release (ff5619a9)
+
 #### 0.2.1 (2018-02-21)
 
 ##### Chores
