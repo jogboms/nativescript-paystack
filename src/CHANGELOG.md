@@ -1,3 +1,9 @@
+#### 0.2.2 (2018-03-19)
+
+##### Bug Fixes
+
+*  foregroundInsidePadding format (265082e5)
+
 #### 0.2.2 (2018-03-15)
 
 ##### New Features
