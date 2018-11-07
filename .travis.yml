@@ -1,5 +1,5 @@
 branches:
-  only: 
+  only:
     - master
     - develop
 
@@ -8,15 +8,15 @@ matrix:
     - stage: "Lint"
       language: node_js
       os: linux
-      node_js: "6"
+      node_js: "8"
       script: cd src && npm run ci.tslint && cd ../demo && npm run ci.tslint && cd ../demo-ng && npm run ci.tslint
     - stage: "Build and WebPack"
       os: osx
       env:
         - WebPackiOS="11"
-      osx_image: xcode9.2
-      language: node_js 
-      node_js: "6"
+      osx_image: xcode9.3
+      language: node_js
+      node_js: "8"
       jdk: oraclejdk8
       script: cd demo && npm run build.plugin && npm i && tns build ios --env.uglify --env.snapshot && cd ../demo-ng && npm i && tns build ios --env.uglify --env.snapshot --env.aot
     - language: android
@@ -24,9 +24,9 @@ matrix:
       env:
         - WebPackAndroid="26"
       jdk: oraclejdk8
-      before_install: nvm install 6.10.3
+      before_install: nvm install 8
       script: cd demo && npm run build.plugin && npm i && tns build android --env.uglify --env.snapshot && cd ../demo-ng && npm i && tns build android --env.uglify --env.snapshot --env.aot
-    - env: 
+    - env:
         - BuildAndroid="26"
       language: android
       os: linux
@@ -35,19 +35,18 @@ matrix:
       script:
         - cd src && npm i && npm run tsc && cd ../demo && tns build android && cd ../demo-ng && tns build android
     - os: osx
-      env: 
+      env:
         - BuildiOS="11"
-        - Xcode="9.2"
-      osx_image: xcode9.2
-      language: node_js 
-      node_js: "6"
+        - Xcode="9.3"
+      osx_image: xcode9.3
+      language: node_js
+      node_js: "8"
       jdk: oraclejdk8
-      script: 
+      script:
         - cd src && npm i && npm run tsc && cd ../demo && tns build ios && cd ../demo-ng && tns build ios
 
 android:
   components:
-    - tools
     - tools
     - platform-tools
     - build-tools-26.0.1
@@ -56,6 +55,6 @@ android:
     - extra-android-m2repository
 
 install:
-    - echo no | npm install -g nativescript
-    - tns usage-reporting disable
-    - tns error-reporting disable
+  - echo no | npm install -g nativescript
+  - tns usage-reporting disable
+  - tns error-reporting disable
